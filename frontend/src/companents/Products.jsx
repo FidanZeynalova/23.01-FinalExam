@@ -13,7 +13,6 @@ function Products() {
   let { fav, setFav } = useContext(FavoritesContext);
   let { basket, setBasket } = useContext(BasketContext);
   let [allData, setAllData] = useState([]);
-  
 
   useEffect(() => {
     if (data && !isLoading) {
@@ -37,9 +36,8 @@ function Products() {
   function handleBasket(item) {
     let find = basket.find((wish) => wish._id == item._id);
     if (find) {
-    find.count ++
-    setBasket([...basket])
-    
+      find.count++;
+      setBasket([...basket]);
     } else {
       setBasket([...basket, { ...item, count: 1 }]);
     }
@@ -60,7 +58,7 @@ function Products() {
 
     switch (sortValue) {
       case "default":
-        sortedValue = [...allData];
+        sortedValue = [...data];
         break;
       case "az":
         sortedValue.sort((a, b) => a.name.localeCompare(b.name));
